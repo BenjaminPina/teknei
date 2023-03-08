@@ -35,14 +35,20 @@
               <tr>
                 <td>{{ categoria.nombre }}</td>
                 <td>
-                  <div class="btn-group">
-                    <a href="/categorias/detalle/{{categoria.id}}" title="Detalle" type="button" class="btn btn-sm btn-primary">
-                      {% bs_icon 'eye' %} Detalle
-                    </a>
-                    <a href="/categorias/editar/{{categoria.id}}" title="Editar" type="button" class="btn btn-sm btn-secondary">
-                      {% bs_icon 'pen' %} Editar
-                    </a>
-                  </div>
+                  <form method="post" action="/categorias/eliminar/{{categoria.id}}">
+                    {% csrf_token %}
+                    <div class="btn-group">
+                      <a href="/categorias/detalle/{{categoria.id}}" title="Detalle" type="button" class="btn btn-sm btn-primary">
+                        {% bs_icon 'eye' %} Detalle
+                      </a>
+                      <a href="/categorias/editar/{{categoria.id}}" title="Editar" type="button" class="btn btn-sm btn-secondary">
+                        {% bs_icon 'pen' %} Editar
+                      </a>
+                        <button type="submit" class="btn btn-sm btn-danger" title="Eliminar" onclick="return confirm('¿Eliminar categoría?');">
+                          {% bs_icon 'trash' %} Eliminar
+                        </button>
+                      </div>
+                  </form>
                 </td>
               </tr>
             {% endfor %}

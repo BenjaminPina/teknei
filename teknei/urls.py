@@ -11,32 +11,37 @@ urlpatterns = [
     path('', views.index, name='index'),
     path(
         'categorias/lista',
-        views.CategoriasLista.as_view(template_name='libros/categoria_lista.html'),
-        name='categoria_lista',
+        views.CategoriasLista.as_view(),
+         name='categoria_lista',
     ),
     path(
         'categorias/alta',
-        views.CategoriaCrear.as_view(template_name='libros/categoria_alta.html'),
+        views.CategoriaCrear.as_view(),
         name='categoria_alta',
     ),
     path(
         'categorias/detalle/<int:pk>',
-        views.CategoriaDetalle.as_view(template_name='libros/categoria_detalle.html'),
+        views.CategoriaDetalle.as_view(),
         name='categoria_detalle',
     ),
     path(
         'categorias/editar/<int:pk>',
-        views.CategoriaActualizar.as_view(template_name='libros/categoria_editar.html'),
+        views.CategoriaActualizar.as_view(),
         name='categoria_editar',
     ),
     path(
+        'categorias/eliminar/<int:pk>',
+        views.CategoriaEliminar.as_view(),
+        name='categoria_eliminar',
+    ),
+    path(
         'libros/lista',
-        views.LibrosLista.as_view(template_name='libros/libro_lista.html'),
+        views.LibrosLista.as_view(),
         name='libro_lista',
     ),
     path(
         'libros/alta',
-        views.LibroCrear.as_view(template_name='libros/libro_alta.html'),
+        views.LibroCrear.as_view(),
         name='libro_alta',
     ),
 ]

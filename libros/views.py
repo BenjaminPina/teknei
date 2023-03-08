@@ -14,6 +14,7 @@ def index(request):
 
 class CategoriasLista(ListView):
     model = Categoria
+    template_name='libros/categoria_lista.html'
 
 
 class CategoriaCrear(SuccessMessageMixin, CreateView):
@@ -21,6 +22,7 @@ class CategoriaCrear(SuccessMessageMixin, CreateView):
     form = Categoria
     fields = ['nombre']
     success_message = 'Categoría registrada correctamente'
+    template_name='libros/categoria_alta.html'
 
     def get_success_url(self):
         return reverse('index')
@@ -28,6 +30,7 @@ class CategoriaCrear(SuccessMessageMixin, CreateView):
 
 class CategoriaDetalle(DetailView):
     model = Categoria
+    template_name='libros/categoria_detalle.html'
 
 
 class CategoriaActualizar(SuccessMessageMixin, UpdateView):
@@ -35,6 +38,15 @@ class CategoriaActualizar(SuccessMessageMixin, UpdateView):
     form = Categoria
     fields = ['nombre']
     success_message = 'Categoría actualizada correctamente'
+    template_name='libros/categoria_editar.html'
+
+    def get_success_url(self):
+        return reverse('index')
+
+
+class CategoriaEliminar(SuccessMessageMixin, DeleteView):
+    model = Categoria
+    success_message = 'Categoría eliminada correctamente'
 
     def get_success_url(self):
         return reverse('index')
@@ -42,6 +54,7 @@ class CategoriaActualizar(SuccessMessageMixin, UpdateView):
 
 class LibrosLista(ListView):
     model = Libro
+    template_name='libros/libro_lista.html'
 
 
 class LibroCrear(SuccessMessageMixin, CreateView):
@@ -49,6 +62,7 @@ class LibroCrear(SuccessMessageMixin, CreateView):
     form = Libro
     fields = ['titulo', 'autor', 'portada', 'categorias']
     success_message = 'Libro registrado correctamente'
+    template_name='libros/libro_alta.html'
 
     def get_success_url(self):
         return reverse('index')
