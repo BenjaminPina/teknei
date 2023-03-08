@@ -1,0 +1,34 @@
+{% extends "./base.html" %}
+
+{% block title %}Categorías{% endblock %}
+
+{% block content %}
+<div class="row mt-3 mb-4">
+    <div class="col-md-12">
+        <h2>
+            Categorías
+        </h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Operaciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for categoria in object_list %}
+              <tr>
+                <td>{{ categoria.nombre }}</td>
+                <td>X</td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+    </div>
+</div>
+{% endblock %}

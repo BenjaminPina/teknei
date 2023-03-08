@@ -1,0 +1,24 @@
+{% extends "./base.html" %}
+
+{% block title %}Alta de productos{% endblock %}
+
+{% block content %}
+<div class="row mt-3 mb-4">
+    <div class="col-md-12">
+        <h2>
+            Alta de categoría
+        </h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <a href="/" class="btn btn-danger">Cancelar</a>
+            <button type="submit" class="btn btn-success">Aceptar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
