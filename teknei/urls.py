@@ -44,6 +44,11 @@ urlpatterns = [
         views.LibroCrear.as_view(),
         name='libro_alta',
     ),
+    path(
+        'libros/detalle/<int:pk>',
+        views.LibroDetalle.as_view(),
+        name='libro_detalle',
+    ),
 ]
 
 urlpatterns += static(

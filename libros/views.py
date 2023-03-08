@@ -66,3 +66,8 @@ class LibroCrear(SuccessMessageMixin, CreateView):
 
     def get_success_url(self):
         return reverse('index')
+
+
+class LibroDetalle(DetailView):
+    model = Libro
+    template_name='libros/libro_detalle.html'

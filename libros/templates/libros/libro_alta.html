@@ -16,7 +16,7 @@
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
-            <a href="/" class="btn btn-danger">Cancelar</a>
+            <a href="/libros/lista" class="btn btn-danger">Cancelar</a>
             <button type="submit" class="btn btn-success">Aceptar</button>
         </form>
     </div>

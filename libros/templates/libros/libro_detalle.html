@@ -1,0 +1,48 @@
+{% extends "./base.html" %}
+
+{% block title %}Libro{% endblock %}
+
+{% block content %}
+<div class="row mt-3 mb-4">
+    <div class="col-md-12">
+        <h2>
+            Libro {{ object.titulo }}
+        </h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <h4>Detalles</h4>
+
+        <p>
+            <strong>Título:</strong>
+            <br>
+            {{object.titulo}}
+        </p>
+        <p>
+            <strong>Autor:</strong>
+            <br>
+            {{object.autor}}
+        </p>
+        <p>
+            <strong>Portada:</strong>
+            <br>
+            {% if object.portada %}
+                <img src="{{object.portada.url}}" class="img-fluid" alt="{{object.portada.url}}">
+            {% endif %}
+        </p>
+        <p>
+            <strong>Categorías:</strong>
+            <br>
+            {% for categoria in object.categorias.all %}
+                <span class="badge badge-secondary">
+                    {{ categoria.nombre }}
+                </span>
+            {% endfor %}
+        </p>
+
+        <a href="/libros/lista" class="btn btn-primary">Volver</a>
+    </div>
+</div>
+{% endblock %}
