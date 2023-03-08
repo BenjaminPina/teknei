@@ -82,3 +82,11 @@ class LibroActualizar(SuccessMessageMixin, UpdateView):
 
     def get_success_url(self):
         return reverse('libro_lista')
+
+
+class LibroEliminar(SuccessMessageMixin, DeleteView):
+    model = Libro
+    success_message = 'Libro eliminado correctamente'
+
+    def get_success_url(self):
+        return reverse('libro_lista')

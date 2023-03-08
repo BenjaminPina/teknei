@@ -54,6 +54,11 @@ urlpatterns = [
         views.LibroActualizar.as_view(),
         name='libro_actualizar',
     ),
+    path(
+        'libros/eliminar/<int:pk>',
+        views.LibroEliminar.as_view(),
+        name='libro_eliminar',
+    ),
 ]
 
 urlpatterns += static(
