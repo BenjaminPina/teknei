@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+</head>
+<body>
+    <header>
+        {% include "./_menu.html" %}
+    </header>
+    <div class="container text-center">
+        {% if messages %}
+            <ul class="messages list-group mb-3">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }} list-group-item list-group-item-primary"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% block content %} {% endblock %}
+    </div>
+
+    {% bootstrap_javascript jquery='full' %}
+</body>
+</html>
