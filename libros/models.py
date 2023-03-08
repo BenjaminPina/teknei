@@ -13,7 +13,7 @@ class Categoria(models.Model):
 class Libro(models.Model):
     titulo = models.CharField(max_length=255)
     autor = models.CharField(max_length=255)
-    portada = models.ImageField(blank=True, null=True)
+    portada = models.ImageField(blank=True, null=True, upload_to='portadas/')
     categorias = models.ManyToManyField(Categoria, related_name='libros')
     creado = models.DateTimeField(auto_now_add=True)
     modificado = models.DateTimeField(auto_now=True)
