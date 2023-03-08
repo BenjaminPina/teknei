@@ -25,7 +25,7 @@ class CategoriaCrear(SuccessMessageMixin, CreateView):
     template_name='libros/categoria_alta.html'
 
     def get_success_url(self):
-        return reverse('index')
+        return reverse('categoria_lista')
 
 
 class CategoriaDetalle(DetailView):
@@ -41,7 +41,7 @@ class CategoriaActualizar(SuccessMessageMixin, UpdateView):
     template_name='libros/categoria_editar.html'
 
     def get_success_url(self):
-        return reverse('index')
+        return reverse('categoria_lista')
 
 
 class CategoriaEliminar(SuccessMessageMixin, DeleteView):
@@ -49,7 +49,7 @@ class CategoriaEliminar(SuccessMessageMixin, DeleteView):
     success_message = 'Categoría eliminada correctamente'
 
     def get_success_url(self):
-        return reverse('index')
+        return reverse('categoria_lista')
 
 
 class LibrosLista(ListView):
@@ -65,9 +65,20 @@ class LibroCrear(SuccessMessageMixin, CreateView):
     template_name='libros/libro_alta.html'
 
     def get_success_url(self):
-        return reverse('index')
+        return reverse('libro_lista')
 
 
 class LibroDetalle(DetailView):
     model = Libro
     template_name='libros/libro_detalle.html'
+
+
+class LibroActualizar(SuccessMessageMixin, UpdateView):
+    model = Libro
+    form = Libro
+    fields = ['titulo', 'autor', 'portada', 'categorias']
+    success_message = 'Libro actualizado correctamente'
+    template_name='libros/libro_editar.html'
+
+    def get_success_url(self):
+        return reverse('libro_lista')
