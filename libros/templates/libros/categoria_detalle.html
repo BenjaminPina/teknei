@@ -1,0 +1,27 @@
+{% extends "./base.html" %}
+
+{% block title %}Categoría{% endblock %}
+
+{% block content %}
+<div class="row mt-3 mb-4">
+    <div class="col-md-12">
+        <h2>
+            Categoría {{ object.nombre }}
+        </h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <h4>Detalles</h4>
+
+        <p>
+            <strong>Nombre:</strong>
+            <br>
+            {{object.nombre}}
+        </p>
+
+        <a href="/categorias/lista" class="btn btn-primary">Volver</a>
+    </div>
+</div>
+{% endblock %}

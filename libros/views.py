@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse
-from django.views.generic import ListView
-from django.views.generic.edit import CreateView
+from django.views.generic import ListView, DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
 
 
@@ -10,6 +10,10 @@ from .models import Categoria, Libro
 
 def index(request):
     return render(request, 'libros/index.html')
+
+
+class CategoriasLista(ListView):
+    model = Categoria
 
 
 class CategoriaCrear(SuccessMessageMixin, CreateView):
@@ -22,8 +26,12 @@ class CategoriaCrear(SuccessMessageMixin, CreateView):
         return reverse('index')
 
 
-class CategoriasLista(ListView):
+class CategoriaDetalle(DetailView):
     model = Categoria
+
+
+class LibrosLista(ListView):
+    model = Libro
 
 
 class LibroCrear(SuccessMessageMixin, CreateView):
@@ -34,7 +42,3 @@ class LibroCrear(SuccessMessageMixin, CreateView):
 
     def get_success_url(self):
         return reverse('index')
-
-
-class LibrosLista(ListView):
-    model = Libro

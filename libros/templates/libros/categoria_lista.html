@@ -1,5 +1,7 @@
 {% extends "./base.html" %}
 
+{% load bootstrap_icons %}
+
 {% block title %}Categorías{% endblock %}
 
 {% block content %}
@@ -14,7 +16,7 @@
 <div class="row mb-3">
   <div class="col">
     <a class="btn btn-success" href="/categorias/alta">
-      Nueva categoría
+      {% bs_icon 'plus-lg' %} Nueva categoría
     </a>
   </div>
 </div>
@@ -32,7 +34,13 @@
               {% for categoria in object_list %}
               <tr>
                 <td>{{ categoria.nombre }}</td>
-                <td>X</td>
+                <td>
+                  <div class="btn-group">
+                    <a href="/categorias/detalle/{{categoria.id}}" title="Detalle" type="button" class="btn btn-sm btn-primary">
+                      {% bs_icon 'eye' %} Detalle
+                    </a>
+                  </div>
+                </td>
               </tr>
             {% endfor %}
             </tbody>

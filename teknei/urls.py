@@ -20,6 +20,11 @@ urlpatterns = [
         name='categoria_alta',
     ),
     path(
+        'categorias/detalle/<int:pk>',
+        views.CategoriaDetalle.as_view(template_name='libros/categoria_detalle.html'),
+        name='categoria_detalle',
+    ),
+    path(
         'libros/lista',
         views.LibrosLista.as_view(template_name='libros/libro_lista.html'),
         name='libro_lista',
