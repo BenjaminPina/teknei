@@ -15,6 +15,8 @@ class Libro(models.Model):
     autor = models.CharField(max_length=255)
     portada = models.ImageField(blank=True, null=True)
     categorias = models.ManyToManyField(Categoria, related_name='libros')
+    creado = models.DateTimeField(auto_now_add=True)
+    modificado = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
         return self.titulo
