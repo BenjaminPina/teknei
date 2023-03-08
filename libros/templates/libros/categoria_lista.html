@@ -1,7 +1,5 @@
 {% extends "./base.html" %}
 
-{% load bootstrap_icons %}
-
 {% block title %}Categorías{% endblock %}
 
 {% block content %}
@@ -16,7 +14,7 @@
 <div class="row mb-3">
   <div class="col">
     <a class="btn btn-success" href="/categorias/alta">
-      {% bs_icon 'plus-lg' %} Nueva categoría
+      Nueva categoría
     </a>
   </div>
 </div>
@@ -39,13 +37,13 @@
                     {% csrf_token %}
                     <div class="btn-group">
                       <a href="/categorias/detalle/{{categoria.id}}" title="Detalle" type="button" class="btn btn-sm btn-primary">
-                        {% bs_icon 'eye' %} Detalle
+                        Detalle
                       </a>
                       <a href="/categorias/editar/{{categoria.id}}" title="Editar" type="button" class="btn btn-sm btn-secondary">
-                        {% bs_icon 'pen' %} Editar
+                        Editar
                       </a>
                         <button type="submit" class="btn btn-sm btn-danger" title="Eliminar" onclick="return confirm('¿Eliminar categoría?');">
-                          {% bs_icon 'trash' %} Eliminar
+                          Eliminar
                         </button>
                       </div>
                   </form>
