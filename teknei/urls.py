@@ -10,14 +10,24 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path(
+        'categorias/lista',
+        views.CategoriasLista.as_view(template_name='libros/categoria_lista.html'),
+        name='categoria_lista',
+    ),
+    path(
         'categorias/alta',
         views.CategoriaCrear.as_view(template_name='libros/categoria_alta.html'),
         name='categoria_alta',
     ),
     path(
-        'categorias/lista',
-        views.CategoriasLista.as_view(template_name='libros/categoria_lista.html'),
-        name='categoria_lista',
+        'libros/lista',
+        views.LibrosLista.as_view(template_name='libros/libro_lista.html'),
+        name='libro_lista',
+    ),
+    path(
+        'libros/alta',
+        views.LibroCrear.as_view(template_name='libros/libro_alta.html'),
+        name='libro_alta',
     ),
 ]
 

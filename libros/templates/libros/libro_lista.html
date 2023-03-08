@@ -1,0 +1,36 @@
+{% extends "./base.html" %}
+
+{% block title %}Libros{% endblock %}
+
+{% block content %}
+<div class="row mt-3 mb-4">
+    <div class="col-md-12">
+        <h2>
+            Libros
+        </h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Operaciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for libro in object_list %}
+              <tr>
+                <td>{{ libro.titulo }}</td>
+                <td>{{ libro.autor }}</td>
+                <td>X</td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+    </div>
+</div>
+{% endblock %}

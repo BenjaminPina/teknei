@@ -24,3 +24,17 @@ class CategoriaCrear(SuccessMessageMixin, CreateView):
 
 class CategoriasLista(ListView):
     model = Categoria
+
+
+class LibroCrear(SuccessMessageMixin, CreateView):
+    model = Libro
+    form = Libro
+    fields = ['titulo', 'autor', 'portada', 'categorias']
+    success_message = 'Libro registrado correctamente'
+
+    def get_success_url(self):
+        return reverse('index')
+
+
+class LibrosLista(ListView):
+    model = Libro

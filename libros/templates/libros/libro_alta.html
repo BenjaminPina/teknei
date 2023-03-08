@@ -1,19 +1,19 @@
 {% extends "./base.html" %}
 
-{% block title %}Alta de categoría{% endblock %}
+{% block title %}Alta de libro{% endblock %}
 
 {% block content %}
 <div class="row mt-3 mb-4">
     <div class="col-md-12">
         <h2>
-            Alta de categoría
+            Alta de libro
         </h2>
     </div>
 </div>
 
 <div class="row">
     <div class="col">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
             <a href="/" class="btn btn-danger">Cancelar</a>
