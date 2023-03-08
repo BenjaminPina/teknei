@@ -30,6 +30,16 @@ class CategoriaDetalle(DetailView):
     model = Categoria
 
 
+class CategoriaActualizar(SuccessMessageMixin, UpdateView):
+    model = Categoria
+    form = Categoria
+    fields = ['nombre']
+    success_message = 'Categoría actualizada correctamente'
+
+    def get_success_url(self):
+        return reverse('index')
+
+
 class LibrosLista(ListView):
     model = Libro
 
