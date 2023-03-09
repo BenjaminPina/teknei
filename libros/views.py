@@ -14,6 +14,7 @@ def index(request):
 
 class CategoriasLista(ListView):
     model = Categoria
+    ordering = ['nombre']
     paginate_by = 5
     template_name='libros/categoria_lista.html'
 
@@ -55,6 +56,8 @@ class CategoriaEliminar(SuccessMessageMixin, DeleteView):
 
 class LibrosLista(ListView):
     model = Libro
+    ordering = ['titulo']
+    paginate_by = 5
     template_name='libros/libro_lista.html'
 
 
