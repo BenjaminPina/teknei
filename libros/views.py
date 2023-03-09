@@ -14,6 +14,7 @@ def index(request):
 
 class CategoriasLista(ListView):
     model = Categoria
+    paginate_by = 5
     template_name='libros/categoria_lista.html'
 
 
