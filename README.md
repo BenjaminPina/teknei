@@ -4,7 +4,7 @@ Aplicación para listar libros.
 
 La aplicación incorpora paginación y validación de formularios.
 
-Las siguientes instrucciones son aplicables a plataformas Linux y MacOS
+Las siguientes instrucciones son aplicables a plataformas Linux y MacOS.
 
 Para ejecutar la aplicación por primera vez, primero hay que crear un entorno virtual.
 ```bash
