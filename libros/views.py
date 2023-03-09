@@ -4,7 +4,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
 
-
+from .validaciones import valida_categoria, valida_libro
 from .models import Categoria, Libro
 
 
@@ -26,6 +26,20 @@ class CategoriaCrear(SuccessMessageMixin, CreateView):
     success_message = 'Categoría registrada correctamente'
     template_name='libros/categoria_alta.html'
 
+    def form_valid(self, form):
+        """
+        Validar el formulario antes de guardar en base de datos
+        """
+        categoria: Categoria = form.instance
+
+        es_valido, campo, mensaje = valida_categoria(categoria)
+
+        if not es_valido:
+            form.add_error(campo, mensaje)
+            return self.form_invalid(form)
+
+        return super().form_valid(form)
+
     def get_success_url(self):
         return reverse('categoria_lista')
 
@@ -41,6 +55,20 @@ class CategoriaActualizar(SuccessMessageMixin, UpdateView):
     fields = ['nombre']
     success_message = 'Categoría actualizada correctamente'
     template_name='libros/categoria_editar.html'
+
+    def form_valid(self, form):
+        """
+        Validar el formulario antes de guardar en base de datos
+        """
+        categoria: Categoria = form.instance
+
+        es_valido, campo, mensaje = valida_categoria(categoria)
+
+        if not es_valido:
+            form.add_error(campo, mensaje)
+            return self.form_invalid(form)
+
+        return super().form_valid(form)
 
     def get_success_url(self):
         return reverse('categoria_lista')
@@ -90,6 +118,20 @@ class LibroCrear(SuccessMessageMixin, CreateView):
     success_message = 'Libro registrado correctamente'
     template_name='libros/libro_alta.html'
 
+    def form_valid(self, form):
+        """
+        Validar el formulario antes de guardar en base de datos
+        """
+        libro: Libro = form.instance
+
+        es_valido, campo, mensaje = valida_libro(libro)
+
+        if not es_valido:
+            form.add_error(campo, mensaje)
+            return self.form_invalid(form)
+
+        return super().form_valid(form)
+
     def get_success_url(self):
         return reverse('libro_lista')
 
@@ -105,6 +147,20 @@ class LibroActualizar(SuccessMessageMixin, UpdateView):
     fields = ['titulo', 'autor', 'portada', 'categorias']
     success_message = 'Libro actualizado correctamente'
     template_name='libros/libro_editar.html'
+
+    def form_valid(self, form):
+        """
+        Validar el formulario antes de guardar en base de datos
+        """
+        libro: Libro = form.instance
+
+        es_valido, campo, mensaje = valida_libro(libro)
+
+        if not es_valido:
+            form.add_error(campo, mensaje)
+            return self.form_invalid(form)
+
+        return super().form_valid(form)
 
     def get_success_url(self):
         return reverse('libro_lista')
