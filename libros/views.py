@@ -60,6 +60,28 @@ class LibrosLista(ListView):
     paginate_by = 5
     template_name='libros/libro_lista.html'
 
+    def get_queryset(self):
+        # aplicar el filtro por categoría
+        categoria = self.request.GET.get('categoria')
+        if categoria:
+            return Libro.objects.filter(categorias__nombre=categoria)
+
+        return super().get_queryset()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # obtener lista de categorías
+        categorias = Categoria.objects.all().order_by('nombre')
+        context['categorias'] = categorias
+        # obtener categoría seleccionada actualmente
+        categoria = self.request.GET.get('categoria')
+        if categoria:
+            context['categoria_actual'] = categoria
+        else:
+            context['categoria_actual'] = ''
+
+        return context
+
 
 class LibroCrear(SuccessMessageMixin, CreateView):
     model = Libro
